@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\Register A Person In A Database(Backend).props" />
+</Project>

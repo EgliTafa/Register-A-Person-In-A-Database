@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33815.320
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Register A Person In A Database", "Register A Person In A Database\Register A Person In A Database.csproj", "{7368D918-7C14-424B-91E1-83DB9B724348}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7368D918-7C14-424B-91E1-83DB9B724348}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7368D918-7C14-424B-91E1-83DB9B724348}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7368D918-7C14-424B-91E1-83DB9B724348}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7368D918-7C14-424B-91E1-83DB9B724348}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BCFC9BE7-2C8B-4B45-8CDA-EB6FDE588E39}
+	EndGlobalSection
+EndGlobal
