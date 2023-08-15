@@ -37,7 +37,7 @@ The Windows Forms frontend provides an easy-to-use interface for interacting wit
 Follow these steps to build and run the Register A Person In A Database application:
 
 1. **Clone the Repository**: Clone this GitHub repository to your local machine using your preferred Git client or by running the following command in your terminal:
-git clone https://github.com/yourusername/register-a-person-app.git
+git clone [https://github.com/yourusername/register-a-person-app.git](https://github.com/EgliTafa/Register-A-Person-In-A-Database.git)
 
 2. **Setup Database**: Make sure you have Microsoft SQL Server installed and create a new database named `PersonDatabase`. Update the database connection string in the `appsettings.json` file of the Web API project.
 
