@@ -1,4 +1,5 @@
-﻿using Register_A_Person_In_A_Database_.Data.Enums;
+﻿using Register_A_Person_In_A_Database.Data.Enums;
+using Register_A_Person_In_A_Database_.Data.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +17,8 @@ namespace Register_A_Person_In_A_Database.Data.Model
         public DateTime Birthday { get; set; }
         public string? PhoneNumber { get; set; }
         public string? Birthplace { get; set; }
-        public JobStatus JobStatus { get; set; } = JobStatus.NotEmployed;
-        public MarriageStatus MarriageStatus { get; set; } = MarriageStatus.Single;
+        public JobStatus JobStatus { get; set; }
+        public MarriageStatus MarriageStatus { get; set; }
+        public Gender Gender { get; set; }
     }
 }

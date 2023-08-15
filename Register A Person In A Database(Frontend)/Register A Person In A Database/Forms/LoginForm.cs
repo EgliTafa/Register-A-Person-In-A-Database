@@ -23,6 +23,8 @@ namespace Register_A_Person_In_A_Database
             _httpClient = new HttpClient();
             _httpClient.BaseAddress = new Uri(BaseUrl);
             _httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            PasswordTextBox.UseSystemPasswordChar = true;
+
         }
 
         // Handle the Click event of the LoginButton

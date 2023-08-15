@@ -58,7 +58,7 @@ namespace Register_A_Person_In_A_Database_Backend_.Controllers
 
         [HttpPut]
         [Route("{id}")]
-        [Authorize(Roles = "Admin")] // Require "Admin" role for update action
+        //[Authorize(Roles = "Admin")] // Require "Admin" role for update action
         public async Task<IActionResult> UpdatePerson(int id, [FromBody] People updatedPerson)
         {
             // Update an existing person's information
@@ -74,7 +74,7 @@ namespace Register_A_Person_In_A_Database_Backend_.Controllers
 
         [HttpDelete]
         [Route("{id}")]
-        [Authorize(Roles = "Admin")] // Require "Admin" role for delete action
+        //[Authorize(Roles = "Admin")] // Require "Admin" role for delete action
         public async Task<IActionResult> DeletePerson(int id)
         {
             // Delete a person by their ID

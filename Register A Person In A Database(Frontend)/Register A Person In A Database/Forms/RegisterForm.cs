@@ -84,6 +84,7 @@ namespace Register_A_Person_In_A_Database
         private void InitializeRoleComboBox()
         {
             RoleComboBox.DataSource = Enum.GetValues(typeof(Roles));
+            RoleComboBox.DropDownStyle = ComboBoxStyle.DropDownList; // Set the drop-down style to read-only
         }
     }
 }

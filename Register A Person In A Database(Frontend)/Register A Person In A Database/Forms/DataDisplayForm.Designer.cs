@@ -84,6 +84,7 @@
             SearchTextBox.Name = "SearchTextBox";
             SearchTextBox.Size = new Size(462, 27);
             SearchTextBox.TabIndex = 4;
+            SearchTextBox.TextChanged += SearchTextBox_TextChanged;
             // 
             // SearchButton
             // 

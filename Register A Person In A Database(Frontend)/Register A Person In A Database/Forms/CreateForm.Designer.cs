@@ -38,12 +38,16 @@
             label3 = new Label();
             BirthplaceTextBox = new TextBox();
             label4 = new Label();
-            JobStatusComboBox = new ComboBox();
             RoleLabel = new Label();
-            MarriageStatusComboBox = new ComboBox();
             label5 = new Label();
             CreateButton = new Button();
             GoBackButton = new Button();
+            NotEmployedCheckBox = new CheckBox();
+            EmployedCheckBox = new CheckBox();
+            GenderLabel = new Label();
+            MaleRadioButton = new RadioButton();
+            FemaleRadioButton = new RadioButton();
+            MarriageComboBox = new ComboBox();
             SuspendLayout();
             // 
             // FirstNameTextBox
@@ -131,15 +135,6 @@
             label4.Text = "Birthplace";
             label4.UseCompatibleTextRendering = true;
             // 
-            // JobStatusComboBox
-            // 
-            JobStatusComboBox.FormattingEnabled = true;
-            JobStatusComboBox.Location = new Point(226, 37);
-            JobStatusComboBox.Name = "JobStatusComboBox";
-            JobStatusComboBox.Size = new Size(151, 28);
-            JobStatusComboBox.TabIndex = 15;
-            JobStatusComboBox.SelectedIndexChanged += RoleComboBox_SelectedIndexChanged;
-            // 
             // RoleLabel
             // 
             RoleLabel.AutoSize = true;
@@ -151,20 +146,10 @@
             RoleLabel.UseCompatibleTextRendering = true;
             RoleLabel.Click += RoleLabel_Click;
             // 
-            // MarriageStatusComboBox
-            // 
-            MarriageStatusComboBox.FormattingEnabled = true;
-            MarriageStatusComboBox.Items.AddRange(new object[] { "Single", "Married", "Divorced", "Widowed" });
-            MarriageStatusComboBox.Location = new Point(226, 115);
-            MarriageStatusComboBox.Name = "MarriageStatusComboBox";
-            MarriageStatusComboBox.Size = new Size(151, 28);
-            MarriageStatusComboBox.TabIndex = 17;
-            MarriageStatusComboBox.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
-            // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(226, 87);
+            label5.Location = new Point(226, 97);
             label5.Name = "label5";
             label5.Size = new Size(113, 25);
             label5.TabIndex = 16;
@@ -191,16 +176,80 @@
             GoBackButton.UseVisualStyleBackColor = true;
             GoBackButton.Click += GoBackButton_Click;
             // 
+            // NotEmployedCheckBox
+            // 
+            NotEmployedCheckBox.AutoSize = true;
+            NotEmployedCheckBox.Location = new Point(226, 37);
+            NotEmployedCheckBox.Name = "NotEmployedCheckBox";
+            NotEmployedCheckBox.Size = new Size(123, 24);
+            NotEmployedCheckBox.TabIndex = 20;
+            NotEmployedCheckBox.Text = "NotEmployed";
+            NotEmployedCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // EmployedCheckBox
+            // 
+            EmployedCheckBox.AutoSize = true;
+            EmployedCheckBox.Location = new Point(226, 59);
+            EmployedCheckBox.Name = "EmployedCheckBox";
+            EmployedCheckBox.Size = new Size(98, 24);
+            EmployedCheckBox.TabIndex = 21;
+            EmployedCheckBox.Text = "Employed";
+            EmployedCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // GenderLabel
+            // 
+            GenderLabel.AutoSize = true;
+            GenderLabel.Location = new Point(226, 169);
+            GenderLabel.Name = "GenderLabel";
+            GenderLabel.Size = new Size(55, 25);
+            GenderLabel.TabIndex = 22;
+            GenderLabel.Text = "Gender";
+            GenderLabel.UseCompatibleTextRendering = true;
+            // 
+            // MaleRadioButton
+            // 
+            MaleRadioButton.AutoSize = true;
+            MaleRadioButton.Location = new Point(226, 200);
+            MaleRadioButton.Name = "MaleRadioButton";
+            MaleRadioButton.Size = new Size(63, 24);
+            MaleRadioButton.TabIndex = 23;
+            MaleRadioButton.TabStop = true;
+            MaleRadioButton.Text = "Male";
+            MaleRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // FemaleRadioButton
+            // 
+            FemaleRadioButton.AutoSize = true;
+            FemaleRadioButton.Location = new Point(226, 230);
+            FemaleRadioButton.Name = "FemaleRadioButton";
+            FemaleRadioButton.Size = new Size(78, 24);
+            FemaleRadioButton.TabIndex = 24;
+            FemaleRadioButton.TabStop = true;
+            FemaleRadioButton.Text = "Female";
+            FemaleRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // MarriageComboBox
+            // 
+            MarriageComboBox.FormattingEnabled = true;
+            MarriageComboBox.Location = new Point(226, 125);
+            MarriageComboBox.Name = "MarriageComboBox";
+            MarriageComboBox.Size = new Size(151, 28);
+            MarriageComboBox.TabIndex = 25;
+            // 
             // CreateForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(MarriageComboBox);
+            Controls.Add(FemaleRadioButton);
+            Controls.Add(MaleRadioButton);
+            Controls.Add(GenderLabel);
+            Controls.Add(EmployedCheckBox);
+            Controls.Add(NotEmployedCheckBox);
             Controls.Add(GoBackButton);
             Controls.Add(CreateButton);
-            Controls.Add(MarriageStatusComboBox);
             Controls.Add(label5);
-            Controls.Add(JobStatusComboBox);
             Controls.Add(RoleLabel);
             Controls.Add(BirthplaceTextBox);
             Controls.Add(label4);
@@ -231,11 +280,16 @@
         private Label label3;
         private TextBox BirthplaceTextBox;
         private Label label4;
-        private ComboBox JobStatusComboBox;
         private Label RoleLabel;
         private ComboBox MarriageStatusComboBox;
         private Label label5;
         private Button CreateButton;
         private Button GoBackButton;
+        private CheckBox NotEmployedCheckBox;
+        private CheckBox EmployedCheckBox;
+        private Label GenderLabel;
+        private RadioButton MaleRadioButton;
+        private RadioButton FemaleRadioButton;
+        private ComboBox MarriageComboBox;
     }
 }

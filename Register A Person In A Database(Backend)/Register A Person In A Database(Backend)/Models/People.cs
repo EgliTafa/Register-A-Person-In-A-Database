@@ -15,6 +15,8 @@ namespace Register_A_Person_In_A_Database_Backend_.Models
         [JsonConverter(typeof(JsonStringEnumConverter))]
         public JobStatus JobStatus { get; set; } = JobStatus.NotEmployed;
         [JsonConverter(typeof(JsonStringEnumConverter))]
-        public MarriageStatus MarriageStatus { get; set; } = MarriageStatus.Single;
+        public MarriageStatus MarriageStatus { get; set; }
+        [JsonConverter(typeof(JsonStringEnumConverter))]
+        public Gender Gender { get; set; }
     }
 }

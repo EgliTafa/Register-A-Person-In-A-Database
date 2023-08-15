@@ -27,4 +27,3 @@ C:\Users\user\source\repos\Register A Person In A Database\Register A Person In 
 C:\Users\user\source\repos\Register A Person In A Database\Register A Person In A Database\obj\Debug\net6.0-windows\Register A Person In A Database.csproj.CopyComplete
 C:\Users\user\source\repos\Register A Person In A Database\Register A Person In A Database\obj\Debug\net6.0-windows\Register_A_Person_In_A_Database.Forms.DataDisplayForm.resources
 C:\Users\user\source\repos\Register A Person In A Database\Register A Person In A Database\obj\Debug\net6.0-windows\Register_A_Person_In_A_Database.Forms.CreateForm.resources
-C:\Users\user\source\repos\Register A Person In A Database\Register A Person In A Database\obj\Debug\net6.0-windows\Register_A_Person_In_A_Database.Forms.UpdateForm.resources

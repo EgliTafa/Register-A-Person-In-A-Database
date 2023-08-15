@@ -8,7 +8,7 @@ namespace Register_A_Person_In_A_Database_Backend_.Data.Repositories
 {
     public class PeopleRepository : IPeopleRepository
     {
-        private readonly ApplicationDbContext _context; // Replace YourDbContext with your actual DbContext class
+        private readonly ApplicationDbContext _context;
 
         public PeopleRepository(ApplicationDbContext context)
         {
@@ -24,9 +24,23 @@ namespace Register_A_Person_In_A_Database_Backend_.Data.Repositories
         // Search for people by name
         public async Task<IEnumerable<People>> SearchPeopleAsync(string name)
         {
-            return await _context.Peoples
-                .Where(p => p.FirstName.Contains(name)) // Filter by first name
-                .ToListAsync();
+            if (string.IsNullOrWhiteSpace(name))
+            {
+                // If the name is empty or contains only whitespace, return all items
+                return await _context.Peoples.ToListAsync();
+            }
+            else
+            {
+                // Split the input name into separate parts for first name and last name
+                string[] nameParts = name.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+
+                string firstName = nameParts.Length > 0 ? nameParts[0] : string.Empty;
+                string lastName = nameParts.Length > 1 ? nameParts[1] : string.Empty;
+
+                return await _context.Peoples
+                    .Where(p => p.FirstName.Contains(firstName) || p.LastName.Contains(lastName))
+                    .ToListAsync();
+            }
         }
 
         // Retrieve all people
@@ -57,6 +71,7 @@ namespace Register_A_Person_In_A_Database_Backend_.Data.Repositories
                 existingPerson.Birthday = updatedPerson.Birthday;
                 existingPerson.JobStatus = updatedPerson.JobStatus;
                 existingPerson.MarriageStatus = updatedPerson.MarriageStatus;
+                existingPerson.Gender = updatedPerson.Gender;
 
                 await _context.SaveChangesAsync();
             }

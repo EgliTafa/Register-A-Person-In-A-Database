@@ -73,9 +73,28 @@ namespace Register_A_Person_In_A_Database.Forms
         }
 
         // Handle logout button click event
-        private void LogoutButton_Click(object sender, EventArgs e)
+        private async void LogoutButton_Click(object sender, EventArgs e)
         {
-            Close();
+            try
+            {
+                string accessToken = JObject.Parse(_token)["token"].ToString();
+                _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+
+                HttpResponseMessage response = await _httpClient.PostAsync("api/Authentication/Logout", null);
+                response.EnsureSuccessStatusCode();
+
+                // Show a success message and open the login form
+                MessageBox.Show("Logout successful.");
+                Close(); // Close the current form
+                using (var loginForm = new LoginForm())
+                {
+                    loginForm.ShowDialog();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred: " + ex.Message);
+            }
         }
 
         // Handle label click event (if applicable)
@@ -111,6 +130,9 @@ namespace Register_A_Person_In_A_Database.Forms
             updateButtonColumn.Text = "Update";
             updateButtonColumn.UseColumnTextForButtonValue = true;
 
+            // Attach the CellBeginEdit event handler
+            peopleDataGridView.CellBeginEdit += DataGridView_CellBeginEdit;
+
             // Add the columns to the DataGridView
             peopleDataGridView.Columns.AddRange(deleteButtonColumn, updateButtonColumn);
         }
@@ -140,13 +162,20 @@ namespace Register_A_Person_In_A_Database.Forms
                     {
                         // Open the update form with selected person's ID
                         Hide();
-                        using (var updateForm = new UpdateForm(_token, selectedPerson.Id))
+                        using (var updateForm = new CreateForm(_token, selectedPerson))
                         {
                             updateForm.ShowDialog();
                         }
                     }
                 }
             }
+        }
+
+        // Handle the CellBeginEdit event to prevent double-click editing
+        private void DataGridView_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
+        {
+            // Cancel the edit action
+            e.Cancel = true;
         }
 
         // Delete a person asynchronously
@@ -205,8 +234,19 @@ namespace Register_A_Person_In_A_Database.Forms
                 // Set authorization header
                 _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
 
-                // Send a GET request to search for people by name
-                HttpResponseMessage response = await _httpClient.GetAsync($"api/People/search?name={searchName}");
+                HttpResponseMessage response;
+
+                // If the search name is empty, load all items
+                if (string.IsNullOrWhiteSpace(searchName))
+                {
+                    response = await _httpClient.GetAsync("api/People");
+                }
+                else
+                {
+                    // Send a GET request to search for people by name
+                    response = await _httpClient.GetAsync($"api/People/search?name={searchName}");
+                }
+
                 response.EnsureSuccessStatusCode();
 
                 // Deserialize the response content into a list of People objects
@@ -223,6 +263,10 @@ namespace Register_A_Person_In_A_Database.Forms
                 // Display an error message if data loading fails
                 MessageBox.Show($"Error: {ex.Message}", "Data Loading Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+        private void SearchTextBox_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
