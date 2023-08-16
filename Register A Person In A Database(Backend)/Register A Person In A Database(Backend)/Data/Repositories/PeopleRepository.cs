@@ -38,10 +38,11 @@ namespace Register_A_Person_In_A_Database_Backend_.Data.Repositories
                 string lastName = nameParts.Length > 1 ? nameParts[1] : string.Empty;
 
                 return await _context.Peoples
-                    .Where(p => p.FirstName.Contains(firstName) || p.LastName.Contains(lastName))
+                    .Where(p => p.FirstName.Contains(firstName) || p.LastName.Contains(lastName) || $"{p.FirstName} {p.LastName}".Contains(name))
                     .ToListAsync();
             }
         }
+
 
         // Retrieve all people
         public async Task<IEnumerable<People>> GetAllPeopleAsync()

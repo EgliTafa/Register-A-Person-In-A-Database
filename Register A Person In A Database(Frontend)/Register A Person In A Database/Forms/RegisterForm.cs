@@ -37,7 +37,7 @@ namespace Register_A_Person_In_A_Database
                 Password = PasswordTextBox.Text,
                 FirstName = FirstNameLabel.Text,
                 LastName = LastNameLabel.Text,
-                Role = RoleComboBox.SelectedItem.ToString(), // Assuming a ComboBox for roles
+                Role = (Roles)RoleComboBox.SelectedItem, // Assuming a ComboBox for roles
                 Email = EmailTextBox.Text
             };
 

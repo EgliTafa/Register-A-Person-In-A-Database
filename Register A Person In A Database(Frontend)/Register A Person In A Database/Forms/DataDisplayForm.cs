@@ -85,7 +85,7 @@ namespace Register_A_Person_In_A_Database.Forms
 
                 // Show a success message and open the login form
                 MessageBox.Show("Logout successful.");
-                Close(); // Close the current form
+                Hide(); // Close the current form
                 using (var loginForm = new LoginForm())
                 {
                     loginForm.ShowDialog();

@@ -42,8 +42,7 @@
             label5 = new Label();
             CreateButton = new Button();
             GoBackButton = new Button();
-            NotEmployedCheckBox = new CheckBox();
-            EmployedCheckBox = new CheckBox();
+            EmploymentCheckBox = new CheckBox();
             GenderLabel = new Label();
             MaleRadioButton = new RadioButton();
             FemaleRadioButton = new RadioButton();
@@ -176,25 +175,15 @@
             GoBackButton.UseVisualStyleBackColor = true;
             GoBackButton.Click += GoBackButton_Click;
             // 
-            // NotEmployedCheckBox
+            // EmploymentCheckBox
             // 
-            NotEmployedCheckBox.AutoSize = true;
-            NotEmployedCheckBox.Location = new Point(226, 37);
-            NotEmployedCheckBox.Name = "NotEmployedCheckBox";
-            NotEmployedCheckBox.Size = new Size(123, 24);
-            NotEmployedCheckBox.TabIndex = 20;
-            NotEmployedCheckBox.Text = "NotEmployed";
-            NotEmployedCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // EmployedCheckBox
-            // 
-            EmployedCheckBox.AutoSize = true;
-            EmployedCheckBox.Location = new Point(226, 59);
-            EmployedCheckBox.Name = "EmployedCheckBox";
-            EmployedCheckBox.Size = new Size(98, 24);
-            EmployedCheckBox.TabIndex = 21;
-            EmployedCheckBox.Text = "Employed";
-            EmployedCheckBox.UseVisualStyleBackColor = true;
+            EmploymentCheckBox.AutoSize = true;
+            EmploymentCheckBox.Location = new Point(226, 40);
+            EmploymentCheckBox.Name = "EmploymentCheckBox";
+            EmploymentCheckBox.Size = new Size(98, 24);
+            EmploymentCheckBox.TabIndex = 21;
+            EmploymentCheckBox.Text = "Employed";
+            EmploymentCheckBox.UseVisualStyleBackColor = true;
             // 
             // GenderLabel
             // 
@@ -245,8 +234,7 @@
             Controls.Add(FemaleRadioButton);
             Controls.Add(MaleRadioButton);
             Controls.Add(GenderLabel);
-            Controls.Add(EmployedCheckBox);
-            Controls.Add(NotEmployedCheckBox);
+            Controls.Add(EmploymentCheckBox);
             Controls.Add(GoBackButton);
             Controls.Add(CreateButton);
             Controls.Add(label5);
@@ -285,8 +273,7 @@
         private Label label5;
         private Button CreateButton;
         private Button GoBackButton;
-        private CheckBox NotEmployedCheckBox;
-        private CheckBox EmployedCheckBox;
+        private CheckBox EmploymentCheckBox;
         private Label GenderLabel;
         private RadioButton MaleRadioButton;
         private RadioButton FemaleRadioButton;

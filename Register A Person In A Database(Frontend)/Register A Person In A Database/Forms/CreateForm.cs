@@ -52,22 +52,19 @@ namespace Register_A_Person_In_A_Database.Forms
             MarriageComboBox.SelectedItem = _personToUpdate.MarriageStatus;
             BirthplaceTextBox.Text = _personToUpdate.Birthplace;
 
-            // Set job status checkboxes
-            NotEmployedCheckBox.Checked = _personToUpdate.JobStatus == JobStatus.NotEmployed;
-            EmployedCheckBox.Checked = _personToUpdate.JobStatus == JobStatus.Employed;
-
             // Set gender radio buttons
             MaleRadioButton.Checked = _personToUpdate.Gender == Gender.Male;
             FemaleRadioButton.Checked = _personToUpdate.Gender == Gender.Female;
+
+            // Set employment status checkbox
+            EmploymentCheckBox.Checked = _personToUpdate.JobStatus == JobStatus.Employed;
 
             // Change CreateButton text to "Update"
             CreateButton.Text = "Update";
         }
 
-
         private void UsernameLabel_Click(object sender, EventArgs e)
         {
-
         }
 
         private void UsernameTextBox_TextChanged(object sender, EventArgs e)
@@ -76,7 +73,6 @@ namespace Register_A_Person_In_A_Database.Forms
 
         private void RoleLabel_Click(object sender, EventArgs e)
         {
-
         }
 
         private void InitializeMarriageComboBox()
@@ -87,7 +83,6 @@ namespace Register_A_Person_In_A_Database.Forms
 
         private void RoleComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -102,41 +97,16 @@ namespace Register_A_Person_In_A_Database.Forms
             {
                 createForm.ShowDialog();
             }
-
         }
 
         private void CreateForm_Load(object sender, EventArgs e)
         {
-            // Set the text for each checkbox
-            NotEmployedCheckBox.Text = JobStatus.NotEmployed.ToString();
-            EmployedCheckBox.Text = JobStatus.Employed.ToString();
-
-            // Add event handlers to checkboxes
-            NotEmployedCheckBox.CheckedChanged += CheckBox_CheckedChanged;
-            EmployedCheckBox.CheckedChanged += CheckBox_CheckedChanged;
+            // Set the text for the employment status checkbox
+            EmploymentCheckBox.Text = JobStatus.Employed.ToString();
 
             // Add event handlers to radio buttons
             MaleRadioButton.CheckedChanged += RadioButton_CheckedChanged;
             FemaleRadioButton.CheckedChanged += RadioButton_CheckedChanged;
-
-        }
-
-        private void CheckBox_CheckedChanged(object sender, EventArgs e)
-        {
-            CheckBox clickedCheckBox = (CheckBox)sender;
-
-            // Uncheck the other checkbox if this checkbox is checked
-            if (clickedCheckBox.Checked)
-            {
-                if (clickedCheckBox == NotEmployedCheckBox)
-                {
-                    EmployedCheckBox.Checked = false;
-                }
-                else if (clickedCheckBox == EmployedCheckBox)
-                {
-                    NotEmployedCheckBox.Checked = false;
-                }
-            }
         }
 
         private void RadioButton_CheckedChanged(object sender, EventArgs e)
@@ -168,18 +138,10 @@ namespace Register_A_Person_In_A_Database.Forms
                 Birthday = BirthdayPicker.Value,
                 PhoneNumber = PhoneNumberTextBox.Text,
                 MarriageStatus = (MarriageStatus)MarriageComboBox.SelectedItem,
-                Birthplace = BirthplaceTextBox.Text
+                Birthplace = BirthplaceTextBox.Text,
+                JobStatus = EmploymentCheckBox.Checked ? JobStatus.Employed : JobStatus.NotEmployed
             };
 
-            // Check the state of each checkbox and add the corresponding enum value
-            if (NotEmployedCheckBox.Checked)
-            {
-                updatedPerson.JobStatus = JobStatus.NotEmployed;
-            }
-            else if (EmployedCheckBox.Checked)
-            {
-                updatedPerson.JobStatus = JobStatus.Employed;
-            }
             // Check the state of radio buttons and add the corresponding enum value
             if (MaleRadioButton.Checked)
             {
@@ -251,7 +213,6 @@ namespace Register_A_Person_In_A_Database.Forms
                 return false;
             }
         }
-
 
         private bool IsValidPhoneNumber(string phoneNumber)
         {
