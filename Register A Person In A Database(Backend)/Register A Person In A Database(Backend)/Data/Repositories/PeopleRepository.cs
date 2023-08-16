@@ -34,12 +34,28 @@ namespace Register_A_Person_In_A_Database_Backend_.Data.Repositories
                 // Split the input name into separate parts for first name and last name
                 string[] nameParts = name.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
 
-                string firstName = nameParts.Length > 0 ? nameParts[0] : string.Empty;
-                string lastName = nameParts.Length > 1 ? nameParts[1] : string.Empty;
+                if (nameParts.Length == 1)
+                {
+                    // Search by first name only
+                    string firstName = nameParts[0];
+                    return await _context.Peoples
+                        .Where(p => p.FirstName.Contains(firstName))
+                        .ToListAsync();
+                }
+                else if (nameParts.Length == 2)
+                {
+                    string firstName = nameParts[0];
+                    string lastName = nameParts[1];
 
-                return await _context.Peoples
-                    .Where(p => p.FirstName.Contains(firstName) || p.LastName.Contains(lastName) || $"{p.FirstName} {p.LastName}".Contains(name))
-                    .ToListAsync();
+                    return await _context.Peoples
+                        .Where(p => p.FirstName.Contains(firstName) || p.LastName.Contains(lastName))
+                        .ToListAsync();
+                }
+                else
+                {
+                    // If more than two words, return an empty result
+                    return new List<People>();
+                }
             }
         }
 
